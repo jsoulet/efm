@@ -6,7 +6,7 @@ const Main: FC = ({ children }) => {
   return (
     <div className="bg-gray-100 min-h-screen w-full">
       <Banner />
-      <div className="max-w-4xl mx-auto relative px-1">
+      <div className="max-w-4xl mx-auto relative px-4">
         <Navbar />
         <main className="bg-white shadow-md p-8  w-full rounded-2xl border-gray-200">
           {children}

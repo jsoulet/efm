@@ -8,3 +8,14 @@
   margin-bottom: -250px;
   
 }
+
+.logos {
+  @apply flex;
+  @apply justify-between;
+}
+
+.logos img {
+  max-height: 88px;
+  width: auto;
+  height: 100%;
+}

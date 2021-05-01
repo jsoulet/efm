@@ -9,10 +9,16 @@ module.exports = {
       serif: [...defaultTheme.fontFamily.serif],
       mono: [...defaultTheme.fontFamily.mono],
     },
-    extend: {},
+    extend: {
+      colors: {
+        'primary': '#347EAE',
+      }
+    },
   },
   variants: {
-    extend: {},
+    extend: {
+      transform: ['hover', 'focus'],
+    },
   },
   plugins: [],
 }

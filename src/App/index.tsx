@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import Layout from './Layout'
+import Home from './Home'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 const App: FC = () => {
@@ -8,7 +9,7 @@ const App: FC = () => {
       <Layout>
         <Switch>
           <Route exact path="/">
-            <div>Home</div>
+            <Home />
           </Route>
           <Route path="/about">
             <div>About</div>
