@@ -8,7 +8,7 @@ const Main: FC = ({ children }) => {
       <Banner />
       <div className="max-w-4xl mx-auto relative px-4">
         <Navbar />
-        <main className="bg-white shadow-md p-8  w-full rounded-2xl border-gray-200">
+        <main className="bg-white shadow-sm p-8  w-full rounded-2xl border-gray-200">
           {children}
         </main>
       </div>

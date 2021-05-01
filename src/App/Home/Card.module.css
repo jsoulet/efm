@@ -6,3 +6,9 @@
   height: 100%;
   @apply bg-primary
 }
+
+.img {
+  height: 176px;
+  @apply w-full;
+  @apply object-cover;
+}
