@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { FC } from 'react'
+import Layout from './Layout'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import './App.css';
-
-function App() {
-	return <div className="text-blue-100">Hello app</div>;
+const App: FC = () => {
+  return (
+    <Router>
+      <Layout>
+        <Switch>
+          <Route exact path="/">
+            <div>Home</div>
+          </Route>
+          <Route path="/about">
+            <div>About</div>
+          </Route>
+          <Route path="/dashboard">
+            <div>Dashboard</div>
+          </Route>
+        </Switch>
+      </Layout>
+    </Router>
+  )
 }
 
-export default App;
+export default App

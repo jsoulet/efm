@@ -11,9 +11,9 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
     "prettier",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -28,26 +28,19 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "bracketSpacing": true,
-        "jsxBracketSameLine": false,
-        "printWidth": 90,
-        "semi": true,
-        "singleQuote": true,
-        "tabWidth": 4,
-        "trailingComma": "es5",
-        "useTabs": true,
-        "overrides": [
-          {
-            "files": "{.prettierrc,.watchmanconfig,.ember-cli}",
-            "options": {"parser": "json"}
-          }
-        ]
+    "react/prop-types": "off",
+    "prettier/prettier":  "error",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/member-delimiter-style": [ "error", { // Prevents us from using any delimiter for interface properties.
+      "multiline": {
+        "delimiter": "none",
+        "requireLast": false
+      },
+      "singleline": {
+        "delimiter": "comma",
+        "requireLast": false
       }
-    ]
+    }]
   }
 }

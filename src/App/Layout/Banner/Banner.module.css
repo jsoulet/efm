@@ -1,0 +1,10 @@
+.banner {
+  height: 390px;
+  width: 100vw;
+  background: linear-gradient(209.63deg, #5E3FB5 13.53%, #347EAE 88.17%);
+  background-size: cover;
+  -webkit-clip-path: url(#banner-clip-path);
+  clip-path: url(#banner-clip-path);
+  margin-bottom: -250px;
+  
+}
