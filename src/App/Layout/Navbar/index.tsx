@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { IconType } from 'react-icons'
 import { useRouteMatch, Link } from 'react-router-dom'
-import { HiChevronLeft, HiHeart } from 'react-icons/hi'
+import { HiChevronLeft, HiHeart, HiOutlineHeart } from 'react-icons/hi'
 import cn from 'classnames'
 import styles from './Navbar.module.css'
 
@@ -35,9 +35,13 @@ const Navbar: FC = () => {
       {!matchesHome && (
         <Navlink label="Retourner aux formations" icon={HiChevronLeft} to="/" />
       )}
-      {!matchesFav && (
-        <Navlink label="Mes favoris" icon={HiHeart} to="favoris" />
-      )}
+      {
+        <Navlink
+          label="Mes favoris"
+          icon={matchesFav ? HiHeart : HiOutlineHeart}
+          to="favoris"
+        />
+      }
     </nav>
   )
 }
