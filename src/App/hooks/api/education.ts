@@ -8,7 +8,7 @@ type EducationWithChapters = {
   [key: string]: Education & { chapters: Entry<Chapter>[] }
 }
 
-export function getAll() {
+export function fetchAll() {
   return useQuery<EducationWithChapters>('EducationsWithChapters', async () => {
     const result = await client
       .getEntries<Chapter>({

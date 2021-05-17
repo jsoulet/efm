@@ -6,7 +6,7 @@ import { useApi } from 'App/hooks/apiContext'
 
 const Home: FC = () => {
   const { education } = useApi()
-  const { data, isLoading } = education.getAll()
+  const { data, isLoading } = education.fetchAll()
   const orderedEducations = useMemo(() => {
     if (!data) {
       return []
@@ -22,7 +22,7 @@ const Home: FC = () => {
 
   return (
     <>
-      <div className="text-gray-800 text-center mb-2 ">
+      <div className="text-gray-800 text-center mb-6 ">
         Quelle est votre formation ?
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
