@@ -39,7 +39,7 @@ const Navbar: FC = () => {
         <Navlink
           label="Mes favoris"
           icon={matchesFav ? HiHeart : HiOutlineHeart}
-          to="favoris"
+          to="/favoris"
         />
       }
     </nav>

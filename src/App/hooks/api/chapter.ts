@@ -12,3 +12,18 @@ export function getAll() {
     })
   })
 }
+
+export function getAllForEducation(educationId: string) {
+  return useQuery(['chapterForEducation', educationId], () => {
+    return client.getEntries<Chapter>({
+      content_type: typeIds.chapter,
+      'fields.education.sys.id': educationId,
+    })
+  })
+}
+
+export function getOne(id: string) {
+  return useQuery(['chapter', id], () => {
+    return client.getEntry<Chapter>(id)
+  })
+}

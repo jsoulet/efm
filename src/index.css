@@ -4,6 +4,7 @@
 
 body {
   @apply font-sans;
+  @apply text-gray-700;
   letter-spacing: -0.02em;
   margin: 0;
   -webkit-font-smoothing: antialiased;

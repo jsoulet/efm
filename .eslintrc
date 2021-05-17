@@ -32,8 +32,10 @@
     "no-debugger": "warn",
     "react/prop-types": "off",
     "prettier/prettier":  "error",
+    // "@typescript-eslint/camelcase": ["error", {"properties": "never"}],
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/member-delimiter-style": [ "error", { // Prevents us from using any delimiter for interface properties.
       "multiline": {
         "delimiter": "none",
