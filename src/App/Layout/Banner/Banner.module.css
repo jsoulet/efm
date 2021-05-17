@@ -6,7 +6,7 @@
   -webkit-clip-path: url(#banner-clip-path);
   clip-path: url(#banner-clip-path);
   margin-bottom: -250px;
-  
+  overflow: hidden;
 }
 
 .logos {
@@ -18,4 +18,5 @@
   max-height: 88px;
   width: auto;
   height: 100%;
+  max-width: 50vw;
 }

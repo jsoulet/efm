@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { IconType } from 'react-icons'
 import { useRouteMatch, Link } from 'react-router-dom'
-import { HiChevronLeft, HiHeart, HiOutlineHeart } from 'react-icons/hi'
+import { HiChevronLeft } from 'react-icons/hi'
 import cn from 'classnames'
 import styles from './Navbar.module.css'
 
@@ -20,11 +20,6 @@ const Navlink: FC<NavlinkProps> = ({ label, icon: Icon, to }) => {
 
 const Navbar: FC = () => {
   const matchesHome = useRouteMatch({ path: '/', exact: true, strict: true })
-  const matchesFav = useRouteMatch({
-    path: '/favoris',
-    exact: true,
-    strict: true,
-  })
   return (
     <nav className=" text-white  mb-4 flex justify-between items-baseline">
       {matchesHome && (
@@ -35,13 +30,6 @@ const Navbar: FC = () => {
       {!matchesHome && (
         <Navlink label="Retourner aux formations" icon={HiChevronLeft} to="/" />
       )}
-      {
-        <Navlink
-          label="Mes favoris"
-          icon={matchesFav ? HiHeart : HiOutlineHeart}
-          to="/favoris"
-        />
-      }
     </nav>
   )
 }

@@ -8,21 +8,27 @@ interface AudioProps {
   french: string
   english: string
   soundUrl: string
-  isFav?: boolean
+  isRead: boolean
+  onEnd: () => void
 }
 
-const Audio: FC<AudioProps> = ({ french, english, soundUrl }) => {
+const Audio: FC<AudioProps> = ({
+  french,
+  english,
+  soundUrl,
+  onEnd,
+  isRead,
+}) => {
   const [play, { stop, isPlaying }] = useSound(soundUrl, {
-    onend: () => {
-      console.log('sound ended')
-    },
+    onend: onEnd,
   })
   return (
     <button
       className={cn(
         styles.audio,
-        'flex items-center text-left px-6 py-3 bg-gray-100 rounded-full border shadow',
-        'transition-all hover:shadow-lg focus:shadow-lg transform hover:-translate-y-1 focus:-translate-y-1 hover:bg-gray-200'
+        'flex items-center text-left px-6 py-3 bg-gray-100 rounded-2xl md:rounded-full border shadow outline-none focus:outline-none',
+        'transition-all hover:shadow-lg focus:shadow-lg transform hover:-translate-y-1 focus:-translate-y-1',
+        { 'opacity-60': isRead }
       )}
       onClick={() => {
         if (isPlaying) {

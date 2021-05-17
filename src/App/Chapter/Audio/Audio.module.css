@@ -1,4 +1,4 @@
-.audio:focus .icon, .audio:hover .icon{
+.audio:hover .icon{
   @apply text-primary;
   @apply transition;
 }

@@ -1,16 +1,23 @@
 import React, { FC } from 'react'
 import { useParams } from 'react-router-dom'
+import { useSessionStorage } from 'react-use'
 import Loader from 'components/Loader'
 import { useApi } from 'App/hooks/apiContext'
 import ChapterList from './ChapterList'
 import Audio from './Audio'
+import Paginate from './Paginate'
 
 const Chapter: FC = () => {
   const { chapterId } = useParams()
   const { chapter: chapterService } = useApi()
   const { data, isLoading } = chapterService.getOne(chapterId)
-  // chapterService.getAllForEducation(educationId)
-
+  const [readAudios, setReadAudios] = useSessionStorage<string[]>('audios', [])
+  const handleOnAudioRead = (audioId: string) => () => {
+    if (readAudios.includes(audioId)) {
+      return
+    }
+    setReadAudios([...readAudios, audioId])
+  }
   if (isLoading) {
     return <Loader />
   }
@@ -20,7 +27,7 @@ const Chapter: FC = () => {
 
   return (
     <>
-      <div className="flex justify-between items-end mb-6">
+      <div className="flex justify-between items-end ">
         <div>
           <div className="text-gray-800  text-3xl font-bold">
             {data.fields.name}
@@ -34,10 +41,12 @@ const Chapter: FC = () => {
           activeChapter={data.fields}
         />
       </div>
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 gap-4 my-6">
         {data.fields.audios.map(audio => {
           return (
             <Audio
+              onEnd={handleOnAudioRead(audio.sys.id)}
+              isRead={readAudios.includes(audio.sys.id)}
               key={audio.sys.id}
               french={audio.fields.french}
               english={audio.fields.english}
@@ -45,6 +54,12 @@ const Chapter: FC = () => {
             />
           )
         })}
+      </div>
+      <div>
+        <Paginate
+          activeChapter={data.fields}
+          educationId={data.fields.education.sys.id}
+        />
       </div>
     </>
   )
