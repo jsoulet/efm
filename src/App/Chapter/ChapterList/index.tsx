@@ -28,17 +28,19 @@ const ChapterList: FC<ChapterListProps> = ({ educationId, activeChapter }) => {
     return null
   }
   return (
-    <div className="flex flex-col relative">
+    <div className="flex flex-col relative flex-shrink-0">
       <Listbox
         value={chapterId}
         onChange={value => history.push(`/chapter/${value}`)}
       >
-        <Listbox.Label className="text-sm ">Accès direct :</Listbox.Label>
-        <Listbox.Button className="bg-primary text-white rounded-md py-2 px-3 border shadow flex items-center">
+        <Listbox.Label className="text-sm font-bold">
+          Accès direct :
+        </Listbox.Label>
+        <Listbox.Button className="bg-white  rounded-md py-2 px-3 border shadow flex items-center focus:outline-none">
           Chapitre {activeChapter.number}
           <FaChevronDown className="ml-4" />
         </Listbox.Button>
-        <Listbox.Options className=" w-56 mt-16 absolute z-10 bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none">
+        <Listbox.Options className=" w-56 mt-16 right-0 absolute z-10 bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none">
           {orderedChapters.map(chapter => {
             return (
               <Listbox.Option
