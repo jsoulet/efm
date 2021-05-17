@@ -33,9 +33,7 @@ const ChapterList: FC<ChapterListProps> = ({ educationId, activeChapter }) => {
         value={chapterId}
         onChange={value => history.push(`/chapter/${value}`)}
       >
-        <Listbox.Label className="text-sm font-bold">
-          Accès direct :
-        </Listbox.Label>
+        <Listbox.Label className="text-sm">Accès direct :</Listbox.Label>
         <Listbox.Button className="bg-white  rounded-md py-2 px-3 border shadow flex items-center focus:outline-none">
           Chapitre {activeChapter.number}
           <FaChevronDown className="ml-4" />
