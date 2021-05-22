@@ -8,6 +8,7 @@
 }
 
 .img {
+  transition: all .2s;
   height: 176px;
   @apply w-full;
   @apply object-cover;

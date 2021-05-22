@@ -48,6 +48,7 @@ const Chapter: FC = () => {
               onEnd={handleOnAudioRead(audio.sys.id)}
               isRead={readAudios.includes(audio.sys.id)}
               key={audio.sys.id}
+              id={audio.sys.id}
               french={audio.fields.french}
               english={audio.fields.english}
               soundUrl={audio.fields.media.fields.file.url}

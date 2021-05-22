@@ -11,7 +11,12 @@ interface CardProps {
 
 const Card: FC<CardProps> = ({ name, img, totalChapters, progress = 0 }) => {
   return (
-    <div className=" bg-white rounded-2xl shadow  overflow-hidden transition-all hover:shadow-xl transform hover:-translate-y-1">
+    <div
+      className={cn(
+        styles.card,
+        'bg-white rounded-2xl shadow  overflow-hidden transition-all hover:shadow-xl transform hover:-translate-y-1'
+      )}
+    >
       <img src={img} alt="" className={cn(styles.img, 'overflow-hidden')} />
       {typeof progress !== 'undefined' && (
         <div className={styles.progress}>

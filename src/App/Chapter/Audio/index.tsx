@@ -1,10 +1,11 @@
 import cn from 'classnames'
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { FaPlay, FaPause } from 'react-icons/fa'
 import useSound from 'use-sound'
 import styles from './Audio.module.css'
 
 interface AudioProps {
+  id: string
   french: string
   english: string
   soundUrl: string
@@ -13,6 +14,7 @@ interface AudioProps {
 }
 
 const Audio: FC<AudioProps> = ({
+  id,
   french,
   english,
   soundUrl,
@@ -22,11 +24,12 @@ const Audio: FC<AudioProps> = ({
   const [play, { stop, isPlaying }] = useSound(soundUrl, {
     onend: onEnd,
   })
+  const [isEnglish, setIsEnglish] = useState(false)
   return (
     <button
       className={cn(
         styles.audio,
-        'flex items-center text-left px-6 py-3 bg-gray-100 rounded-2xl md:rounded-full border shadow outline-none focus:outline-none',
+        'flex items-center text-left px-6 py-3 bg-gray-100 rounded-2xl border shadow outline-none focus:outline-none',
         'transition-all hover:shadow-lg focus:shadow-lg transform hover:-translate-y-1 focus:-translate-y-1',
         { 'opacity-60': isRead }
       )}
@@ -37,12 +40,48 @@ const Audio: FC<AudioProps> = ({
         return play()
       }}
     >
-      <div className={cn(styles.icon, 'flex items-center mr-6  text-2xl')}>
+      <div className={cn(styles.icon, 'flex items-center mr-6 text-2xl')}>
         {isPlaying ? <FaPause /> : <FaPlay />}
       </div>
+      <div className="flex-grow">
+        <div className="text-gray-600 text-lg">
+          {isEnglish ? english : french}
+        </div>
+        {/* <div className="text-gray-500 ">{french}</div> */}
+      </div>
       <div>
-        <div className="text-primary font-bold text-lg">{english}</div>
-        <div className="text-gray-500 ">{french}</div>
+        <label htmlFor={id} className="inline-flex items-center cursor-pointer">
+          <span className="mr-3 text-md">🇫🇷</span>
+          <span className="relative">
+            <span
+              className={cn(
+                'block w-10 h-6  rounded-full shadow-inner transition-transform duration-300 ease-in-out',
+                {
+                  'bg-primary': isEnglish,
+                  'bg-gray-300': !isEnglish,
+                }
+              )}
+            ></span>
+            <span
+              className={cn(
+                'absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 bg-white focus-within:shadow-outline transition-transform duration-300 ease-in-out transform ',
+                {
+                  ' translate-x-full': isEnglish,
+                  ' ': !isEnglish,
+                }
+              )}
+            >
+              <input
+                id={id}
+                type="checkbox"
+                checked={isEnglish}
+                className="absolute opacity-0 w-0 h-0"
+                onClick={() => setIsEnglish(!isEnglish)}
+              />
+            </span>
+          </span>
+          <span className="ml-3 text-md">🇬🇧</span>
+        </label>
       </div>
     </button>
   )
