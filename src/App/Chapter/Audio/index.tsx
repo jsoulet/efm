@@ -47,7 +47,6 @@ const Audio: FC<AudioProps> = ({
         <div className="text-gray-600 text-lg">
           {isEnglish ? english : french}
         </div>
-        {/* <div className="text-gray-500 ">{french}</div> */}
       </div>
       <div>
         <label htmlFor={id} className="inline-flex items-center cursor-pointer">
