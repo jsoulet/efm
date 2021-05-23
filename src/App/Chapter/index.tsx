@@ -29,9 +29,9 @@ const Chapter: FC = () => {
     <>
       <div className="flex justify-between items-end ">
         <div>
-          <div className="text-gray-800  text-3xl font-bold">
+          <h2 className="text-gray-800  text-3xl font-bold">
             {data.fields.name}
-          </div>
+          </h2>
           <div className="text-gray-400  text-xl">
             Formation : {data.fields.education.fields.name}
           </div>

@@ -5,10 +5,10 @@ const Banner: FC = () => {
   return (
     <header className={styles.banner}>
       <div className="text-white font-important  uppercase text-center font-bold mt-16">
-        <div className="text-4xl">
+        <h1 className="text-3xl md:text-4xl ">
           Système Mondial de Détresse et de Sécurité en Mer
-        </div>
-        <div className="text-2xl opacity-60">
+        </h1>
+        <div className="text-2xl md:text-2xl opacity-60">
           Ecole des formations maritimes
         </div>
       </div>
