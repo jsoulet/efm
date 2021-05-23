@@ -1,18 +1,16 @@
 import React, { FC } from 'react'
 import styles from './Banner.module.css'
-import logoEfm from './logo-efm.svg'
-import logoQualiopi from './logo-qualiopi.png'
 
 const Banner: FC = () => {
   return (
     <header className={styles.banner}>
-      <div className={styles.logos}>
-        <img
-          className="m-2"
-          src={logoEfm}
-          alt="Logo Ecole des Formations Maritimes"
-        />
-        <img src={logoQualiopi} alt="Logo Qualiopi, processus certifié" />
+      <div className="text-white font-important  uppercase text-center font-bold mt-16">
+        <div className="text-4xl">
+          Système Mondial de Détresse et de Sécurité en Mer
+        </div>
+        <div className="text-2xl opacity-60">
+          Ecole des formations maritimes
+        </div>
       </div>
       <svg>
         <clipPath id="banner-clip-path" clipPathUnits="objectBoundingBox">

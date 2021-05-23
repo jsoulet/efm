@@ -32,7 +32,7 @@ const Button: FC<ButtonPropsType> = ({
     <Tag
       className={cn([
         className,
-        'flex justify-center items-center  transition-all bg-white border-primary border-2 px-5 py-2 font-semibold tracking-wider text-primary rounded-full hover:-translate-y-1 transform hover:bg-primary hover:text-white',
+        'flex justify-center items-center  transition-all bg-white border-primary border-2 px-5 py-2 font-semibold tracking-wider text-primary rounded-full transform hover:bg-primary hover:text-white',
       ])}
       {...(onClick ? { onClick } : { to })}
     >

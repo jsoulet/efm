@@ -3,6 +3,7 @@ import { IconType } from 'react-icons'
 import { useRouteMatch, Link } from 'react-router-dom'
 import { HiChevronLeft } from 'react-icons/hi'
 import cn from 'classnames'
+import useGreetings from './useGreetings'
 import styles from './Navbar.module.css'
 
 interface NavlinkProps {
@@ -20,11 +21,12 @@ const Navlink: FC<NavlinkProps> = ({ label, icon: Icon, to }) => {
 
 const Navbar: FC = () => {
   const matchesHome = useRouteMatch({ path: '/', exact: true, strict: true })
+  const greetings = useGreetings()
   return (
-    <nav className=" text-white  mb-4 flex justify-between items-baseline">
+    <nav className=" text-white  mb-2 flex justify-between items-baseline">
       {matchesHome && (
-        <div className="text-5xl font-bold">
-          <span className={cn(styles.wave)}>👋</span> Welcome
+        <div className="text-2xl font-bold">
+          <span className={cn(styles.wave)}>👋</span> {greetings}
         </div>
       )}
       {!matchesHome && (

@@ -1,22 +1,12 @@
 .banner {
   height: 390px;
-  width: 100vw;
+  width: 100%;
   background: linear-gradient(209.63deg, #5E3FB5 13.53%, #347EAE 88.17%);
   background-size: cover;
   -webkit-clip-path: url(#banner-clip-path);
   clip-path: url(#banner-clip-path);
-  margin-bottom: -250px;
+  margin-bottom: -200px;
   overflow: hidden;
 }
 
-.logos {
-  @apply flex;
-  @apply justify-between;
-}
 
-.logos img {
-  max-height: 88px;
-  width: auto;
-  height: 100%;
-  max-width: 50vw;
-}

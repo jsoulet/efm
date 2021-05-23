@@ -6,12 +6,13 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
+      important: ['Oswald', ...defaultTheme.fontFamily.sans],
       serif: [...defaultTheme.fontFamily.serif],
       mono: [...defaultTheme.fontFamily.mono],
     },
     extend: {
       colors: {
-        'primary': '#347EAE',
+        'primary': '#007DB0',
       },
       animation: {
         bounce200: 'bounce 1s infinite 200ms',
