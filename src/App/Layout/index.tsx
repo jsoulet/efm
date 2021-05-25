@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { Link } from 'react-router-dom'
 import cn from 'classnames'
 import Banner from './Banner'
 import Navbar from './Navbar'
@@ -10,7 +11,8 @@ import logoQualiopi from './logo-qualiopi.png'
 const Main: FC = ({ children }) => {
   return (
     <div className="bg-gray-100 min-h-screen w-full flex flex-col md:flex-row retative">
-      <div
+      <a
+        href="https://ecoledesformationsmaritimes.fr"
         className={cn(
           'text-white bg-primary p-2 uppercase font-bold text-center md:rotate-180 flex items-center justify-center',
           styles.schoolName
@@ -19,7 +21,7 @@ const Main: FC = ({ children }) => {
         Ecole des Formations Maritimes{' '}
         <img src={dotArrow} alt="" className={styles.dotArrow} /> Les Sables -
         Yeu
-      </div>
+      </a>
       <div className="flex-grow">
         <Banner />
         <div className="max-w-4xl mx-auto relative px-4 lg:px-0">
