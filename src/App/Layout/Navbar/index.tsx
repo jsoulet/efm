@@ -30,7 +30,7 @@ const Navbar: FC = () => {
         </div>
       )}
       {!matchesHome && (
-        <Navlink label="Retourner aux formations" icon={HiChevronLeft} to="/" />
+        <Navlink label="Retour aux formations" icon={HiChevronLeft} to="/" />
       )}
     </nav>
   )

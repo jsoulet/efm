@@ -27,12 +27,12 @@ const Chapter: FC = () => {
 
   return (
     <>
-      <div className="flex justify-between items-end ">
-        <div>
+      <div className="flex justify-between items-center flex-col md:flex-row">
+        <div className="flex-grow">
           <h2 className="text-gray-800  text-3xl font-bold">
             {data.fields.name}
           </h2>
-          <div className="text-gray-400  text-xl">
+          <div className="text-gray-400 text-xl mt-1">
             Formation : {data.fields.education.fields.name}
           </div>
         </div>
@@ -41,7 +41,7 @@ const Chapter: FC = () => {
           activeChapter={data.fields}
         />
       </div>
-      <div className="grid grid-cols-1 gap-4 my-6">
+      <div className="grid grid-cols-1 gap-6 my-8">
         {data.fields.audios.map(audio => {
           return (
             <Audio

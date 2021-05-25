@@ -25,10 +25,7 @@ const Paginate: FC<Paginate> = ({ educationId }) => {
     const chapterIndex = orderedChapters.findIndex(
       chapter => chapter.sys.id === chapterId
     )
-    console.log({
-      orderedChapters,
-      chapterIndex,
-    })
+
     return [
       orderedChapters.slice(chapterIndex - 1, chapterIndex).pop(),
       orderedChapters.slice(chapterIndex + 1, chapterIndex + 2).pop(),

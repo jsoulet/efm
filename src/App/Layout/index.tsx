@@ -41,7 +41,7 @@ const Main: FC = ({ children }) => {
               <img src={logoQualiopi} alt="Logo Qualiopi, processus certifié" />
             </a>
           </div>
-          <div className="text-sm text-gray-400 flex justify-center items-center pt-8">
+          <div className="text-sm text-gray-400 flex justify-center items-center py-8">
             <span>
               Conception{' : '}
               <a href="https://johansoulet.fr" className="underline">

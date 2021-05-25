@@ -9,7 +9,8 @@
 
 .img {
   transition: all .2s;
-  height: 176px;
+  height: 190px;
+  clip-path: polygon(0% 0%,100% 0%,100% 85%,0% 100%);
   @apply w-full;
   @apply object-cover;
 }

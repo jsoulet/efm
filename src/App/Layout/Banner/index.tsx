@@ -4,7 +4,7 @@ import styles from './Banner.module.css'
 const Banner: FC = () => {
   return (
     <header className={styles.banner}>
-      <div className="text-white font-important  uppercase text-center font-bold mt-16">
+      <div className="text-white font-important  uppercase text-center font-bold mt-11 md:mt-16">
         <h1 className="text-3xl md:text-4xl ">
           Système Mondial de Détresse et de Sécurité en Mer
         </h1>

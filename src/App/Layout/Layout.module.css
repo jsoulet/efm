@@ -20,13 +20,12 @@
   @apply flex;
   @apply justify-center;
   @apply items-center;
-  @apply mt-4;
+  @apply mt-6;
 }
 
 .logos img {
-  height: 80px;
+  max-height: 80px;
   width: auto;
-  /* height: 100%; */
   max-width: 50vw;
 }
 .logos *:not(:last-child) {

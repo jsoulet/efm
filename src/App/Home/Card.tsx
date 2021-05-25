@@ -23,7 +23,7 @@ const Card: FC<CardProps> = ({ name, img, totalChapters, progress = 0 }) => {
           <div style={{ width: `${progress}%` }}></div>
         </div>
       )}
-      <div className="p-6 pt-4">
+      <div className="p-6 pt-1">
         <h2 className="est text-xl text-primary font-bold mb-2">{name}</h2>
         <p className="text-gray-400">
           {totalChapters} chapitre{totalChapters > 1 && 's'}

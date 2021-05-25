@@ -29,8 +29,8 @@ const Audio: FC<AudioProps> = ({
     <button
       className={cn(
         styles.audio,
-        'flex items-center text-left px-6 py-3 bg-gray-100 rounded-2xl border shadow outline-none focus:outline-none',
-        'transition-all hover:shadow-lg focus:shadow-lg transform hover:-translate-y-1 focus:-translate-y-1',
+        'flex items-center text-left px-6 py-4 bg-gray-100 rounded-2xl border shadow outline-none flex-wrap md:flex-nowrap justify-center',
+        'transition-all hover:shadow-lg focus:shadow-lg transform hover:-translate-y-1 focus:-translate-y-1 focus:outline-none',
         { 'opacity-60': isRead }
       )}
       onClick={() => {
@@ -40,18 +40,20 @@ const Audio: FC<AudioProps> = ({
         return play()
       }}
     >
-      <div className={cn(styles.icon, 'flex items-center mr-6 text-2xl')}>
-        {isPlaying ? <FaPause /> : <FaPlay />}
-      </div>
-      <div className="flex-grow">
-        <div className="text-gray-600 text-lg">
-          {isEnglish ? english : french}
+      <div className="flex-grow flex">
+        <div className={cn(styles.icon, 'flex items-center mr-6 text-2xl')}>
+          {isPlaying ? <FaPause /> : <FaPlay />}
+        </div>
+        <div className="flex-grow mr-6">
+          <div className="text-gray-600 text-lg">
+            {isEnglish ? english : french}
+          </div>
         </div>
       </div>
       <div>
         <label htmlFor={id} className="inline-flex items-center cursor-pointer">
           <span className="mr-3 text-md">🇫🇷</span>
-          <span className="relative">
+          <span className="relative focus-within:ring">
             <span
               className={cn(
                 'block w-10 h-6  rounded-full shadow-inner transition-transform duration-300 ease-in-out',
@@ -63,7 +65,7 @@ const Audio: FC<AudioProps> = ({
             ></span>
             <span
               className={cn(
-                'absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 bg-white focus-within:shadow-outline transition-transform duration-300 ease-in-out transform ',
+                'absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 bg-white focus-within:shadow-outline transition-transform duration-300 ease-in-out transform',
                 {
                   ' translate-x-full': isEnglish,
                   ' ': !isEnglish,
@@ -75,7 +77,10 @@ const Audio: FC<AudioProps> = ({
                 type="checkbox"
                 checked={isEnglish}
                 className="absolute opacity-0 w-0 h-0"
-                onClick={() => setIsEnglish(!isEnglish)}
+                onChange={e => {
+                  e.stopPropagation()
+                  setIsEnglish(!isEnglish)
+                }}
               />
             </span>
           </span>
