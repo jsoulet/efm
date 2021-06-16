@@ -7,7 +7,7 @@ import ChapterList from './ChapterList'
 import Audio from './Audio'
 import Paginate from './Paginate'
 
-const Chapter: FC = () => {
+const Education: FC = () => {
   const { educationId, chapterId } = useParams()
   const { education } = useApi()
   const { data, isLoading } = education.fetchOne(educationId)
@@ -75,4 +75,4 @@ const Chapter: FC = () => {
   )
 }
 
-export default Chapter
+export default Education

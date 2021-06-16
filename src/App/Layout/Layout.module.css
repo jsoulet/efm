@@ -20,7 +20,6 @@
   @apply flex;
   @apply justify-center;
   @apply items-center;
-  @apply mt-6;
 }
 
 .logos img {

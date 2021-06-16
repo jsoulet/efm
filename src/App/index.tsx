@@ -5,6 +5,7 @@ import Home from './Home'
 import Education from './Education'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ApiProvider } from './hooks/apiContext'
+import Page from './Page'
 
 const App: FC = () => {
   return (
@@ -18,8 +19,8 @@ const App: FC = () => {
             <Route path="/education/:educationId/chapter/:chapterId">
               <Education />
             </Route>
-            <Route path="/dashboard">
-              <div>Dashboard</div>
+            <Route path="/:slug">
+              <Page />
             </Route>
             <Route>
               <div>Not found</div>

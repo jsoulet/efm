@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
+import { useApi } from 'App/hooks/apiContext'
 import cn from 'classnames'
 import Banner from './Banner'
 import Navbar from './Navbar'
@@ -9,6 +10,9 @@ import logoEfm from './logo-efm-2021.png'
 import logoQualiopi from './logo-qualiopi.png'
 
 const Main: FC = ({ children }) => {
+  const { home } = useApi()
+  const { data } = home.fetchHome()
+
   return (
     <div className="bg-gray-100 min-h-screen w-full flex flex-col md:flex-row retative">
       <a
@@ -26,9 +30,21 @@ const Main: FC = ({ children }) => {
         <Banner />
         <div className="max-w-4xl mx-auto relative px-4 lg:px-0">
           <Navbar />
-          <main className="bg-white shadow-sm p-8 4xl:p-0 w-full rounded-2xl border-gray-200">
+          <main className="bg-white shadow-sm p-8 4xl:p-0 w-full rounded-2xl border-gray-200 mb-6">
             {children}
           </main>
+          {data && (
+            <nav className="flex mb-6 justify-center items-center">
+              {data.fields.footerLinks?.map((link, index) => (
+                <div key={link.sys.id}>
+                  {index !== 0 && <span className="px-3">|</span>}
+                  <Link to={`/${link.fields.slug}`} className="underline">
+                    {link.fields.title}
+                  </Link>
+                </div>
+              ))}
+            </nav>
+          )}
           <div className={styles.logos}>
             <a
               href="https://www.ecoledesformationsmaritimes.fr/"

@@ -1,4 +1,5 @@
 import { Entry } from 'contentful'
+import { Document } from '@contentful/rich-text-types'
 
 type Media = Entry<{
   file: {
@@ -28,4 +29,11 @@ export type Audio = {
 
 export type Home = {
   trainings: Array<Entry<Education>>
+  footerLinks: Array<Entry<Page>>
+}
+
+export type Page = {
+  title: string
+  content: Document
+  slug: string
 }
