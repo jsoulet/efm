@@ -13,4 +13,5 @@
   clip-path: polygon(0% 0%,100% 0%,100% 85%,0% 100%);
   @apply w-full;
   @apply object-cover;
+  @apply bg-gray-200
 }

@@ -1,6 +1,7 @@
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSessionStorage } from 'react-use'
+import { Entry } from 'contentful'
 import Loader from 'components/Loader'
 import { useApi } from 'App/hooks/apiContext'
 import ChapterList from './ChapterList'
@@ -8,9 +9,13 @@ import Audio from './Audio'
 import Paginate from './Paginate'
 
 const Chapter: FC = () => {
-  const { chapterId } = useParams()
-  const { chapter: chapterService } = useApi()
-  const { data, isLoading } = chapterService.getOne(chapterId)
+  const { educationId, chapterId } = useParams()
+  const { education } = useApi()
+  const { data, isLoading } = education.fetchOne(educationId)
+  const currentChapter = useMemo(
+    () => data?.fields.chapters.find(chapter => chapter.sys.id === chapterId),
+    [data, chapterId]
+  )
   const [readAudios, setReadAudios] = useSessionStorage<string[]>('audios', [])
   const handleOnAudioRead = (audioId: string) => () => {
     if (readAudios.includes(audioId)) {
@@ -22,6 +27,9 @@ const Chapter: FC = () => {
     return <Loader />
   }
   if (!data) {
+    return <div>Education not found</div>
+  }
+  if (!currentChapter) {
     return <div>Chapter not found</div>
   }
 
@@ -30,19 +38,20 @@ const Chapter: FC = () => {
       <div className="flex justify-between items-center flex-col md:flex-row">
         <div className="flex-grow">
           <h2 className="text-gray-800  text-3xl font-bold">
-            {data.fields.name}
+            {currentChapter.fields.name}
           </h2>
           <div className="text-gray-400 text-xl mt-1">
-            Formation : {data.fields.education.fields.name}
+            Formation : {data.fields.name}
           </div>
         </div>
         <ChapterList
-          educationId={data.fields.education.sys.id}
-          activeChapter={data.fields}
+          educationId={data.sys.id}
+          activeChapter={currentChapter}
+          educationChapters={data.fields.chapters}
         />
       </div>
       <div className="grid grid-cols-1 gap-6 my-8">
-        {data.fields.audios.map(audio => {
+        {currentChapter.fields.audios.map(audio => {
           return (
             <Audio
               onEnd={handleOnAudioRead(audio.sys.id)}
@@ -58,8 +67,9 @@ const Chapter: FC = () => {
       </div>
       <div>
         <Paginate
-          activeChapter={data.fields}
-          educationId={data.fields.education.sys.id}
+          educationId={data.sys.id}
+          activeChapter={currentChapter}
+          educationChapters={data.fields.chapters}
         />
       </div>
     </>

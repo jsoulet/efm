@@ -5,17 +5,9 @@ import Loader from 'components/Loader'
 import { useApi } from 'App/hooks/apiContext'
 
 const Home: FC = () => {
-  const { education } = useApi()
-  const { data, isLoading } = education.fetchAll()
-  const orderedEducations = useMemo(() => {
-    if (!data) {
-      return []
-    }
-    const collator = new Intl.Collator('fr-FR', { numeric: true })
-    return Object.entries(data).sort((a, b) => {
-      return collator.compare(a[1].name, b[1].name)
-    })
-  }, [data])
+  const { home } = useApi()
+  const { data, isLoading } = home.fetchHome()
+
   if (isLoading) {
     return <Loader />
   }
@@ -26,19 +18,30 @@ const Home: FC = () => {
         Quelle est votre formation ?
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {orderedEducations.map(([id, education]) => {
-          const firstChapter = education.chapters[0]
+        {data?.fields.trainings.map(education => {
+          const { image, name, chapters } = education.fields
+          const [firstChapter] = chapters || []
+          const card = (
+            <Card
+              name={name}
+              img={image?.fields.file.url}
+              totalChapters={chapters?.length}
+            />
+          )
+          if (!firstChapter) {
+            return (
+              <div key={education.sys.id} className="flex">
+                {card}
+              </div>
+            )
+          }
           return (
             <Link
-              key={id}
-              to={`/chapter/${firstChapter.sys.id}`}
+              key={education.sys.id}
+              to={`/education/${education.sys.id}/chapter/${firstChapter.sys.id}`}
               className="flex"
             >
-              <Card
-                name={education.name}
-                img={education.image.fields.file.url}
-                totalChapters={education.chapters.length}
-              />
+              {card}
             </Link>
           )
         })}

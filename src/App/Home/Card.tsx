@@ -9,12 +9,17 @@ interface CardProps {
   progress?: number
 }
 
-const Card: FC<CardProps> = ({ name, img, totalChapters, progress = 0 }) => {
+const Card: FC<CardProps> = ({
+  name,
+  img,
+  totalChapters = 0,
+  progress = 0,
+}) => {
   return (
     <div
       className={cn(
         styles.card,
-        'bg-white rounded-2xl shadow  overflow-hidden transition-all hover:shadow-xl transform hover:-translate-y-1'
+        'bg-white rounded-2xl shadow w-full overflow-hidden transition-all hover:shadow-xl transform hover:-translate-y-1'
       )}
     >
       <img src={img} alt="" className={cn(styles.img, 'overflow-hidden')} />
@@ -26,7 +31,8 @@ const Card: FC<CardProps> = ({ name, img, totalChapters, progress = 0 }) => {
       <div className="p-6 pt-1">
         <h2 className="est text-xl text-primary font-bold mb-2">{name}</h2>
         <p className="text-gray-400">
-          {totalChapters} chapitre{totalChapters > 1 && 's'}
+          {totalChapters > 0 ? totalChapters : 'Aucun'} chapitre
+          {totalChapters > 1 && 's'}
         </p>
       </div>
     </div>

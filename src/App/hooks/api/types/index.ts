@@ -1,11 +1,6 @@
-type ContentfulElement<T> = {
-  sys: {
-    id: string
-  }
-  fields: T
-}
+import { Entry } from 'contentful'
 
-type Media = ContentfulElement<{
+type Media = Entry<{
   file: {
     url: string
     fileName: string
@@ -15,17 +10,22 @@ type Media = ContentfulElement<{
 export type Education = {
   name: string
   image: Media
+  chapters: Array<Entry<Chapter>>
 }
 
 export type Chapter = {
   name: string
   number: number
-  audios: Array<ContentfulElement<Audio>>
-  education: ContentfulElement<Education>
+  audios: Array<Entry<Audio>>
+  education: Entry<Education>
 }
 
 export type Audio = {
   french: string
   english: string
   media: Media
+}
+
+export type Home = {
+  trainings: Array<Entry<Education>>
 }
