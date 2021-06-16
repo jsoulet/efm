@@ -1,8 +1,6 @@
-import { useApi } from 'App/hooks/apiContext'
 import React, { FC, useMemo } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import Button from 'components/Button'
-import { useParams } from 'react-router-dom'
 import { Chapter } from 'App/hooks/api/types'
 import { Entry } from 'contentful'
 

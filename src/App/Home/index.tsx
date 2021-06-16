@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from 'react'
+import React, { FC } from 'react'
 import Card from './Card'
 import { Link } from 'react-router-dom'
 import Loader from 'components/Loader'

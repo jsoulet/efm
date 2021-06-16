@@ -1,7 +1,6 @@
 import React, { FC, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSessionStorage } from 'react-use'
-import { Entry } from 'contentful'
 import Loader from 'components/Loader'
 import { useApi } from 'App/hooks/apiContext'
 import ChapterList from './ChapterList'

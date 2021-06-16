@@ -1,8 +1,7 @@
-import { useApi } from 'App/hooks/apiContext'
 import React, { FC, useMemo } from 'react'
 import { FaChevronDown } from 'react-icons/fa'
 import { Listbox, Transition } from '@headlessui/react'
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Chapter } from 'App/hooks/api/types'
 import { Entry } from 'contentful'
 

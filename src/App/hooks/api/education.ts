@@ -1,6 +1,5 @@
 import { client } from './utils'
 import { useQuery } from 'react-query'
-import typeIds from './typeIds'
 import { Entry } from 'contentful'
 import { Education } from './types'
 
