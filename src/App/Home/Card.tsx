@@ -19,7 +19,10 @@ const Card: FC<CardProps> = ({
     <div
       className={cn(
         styles.card,
-        'bg-white rounded-2xl shadow w-full overflow-hidden transition-all hover:shadow-xl transform hover:-translate-y-1'
+        'bg-white rounded-2xl shadow w-full overflow-hidden',
+        totalChapters > 0 &&
+          'transition-all hover:shadow-xl transform hover:-translate-y-1',
+        totalChapters === 0 && 'opacity-70 cursor-not-allowed'
       )}
     >
       <img src={img} alt="" className={cn(styles.img, 'overflow-hidden')} />
