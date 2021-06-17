@@ -1,10 +1,19 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Banner.module.css'
+import banner from './banner.svg'
 
 const Banner: FC = () => {
   return (
-    <header className={styles.banner}>
+    <header
+      className={styles.banner}
+      // style={{ backgroundImage: `url("${banner}")` }}
+    >
+      <img
+        src={banner}
+        alt=""
+        className="absolute top-0 left-0 h-full w-full -z-10"
+      ></img>
       <div className="text-white font-important  uppercase text-center font-bold mt-11 md:mt-16 px-4">
         <h1 className="text-3xl md:text-4xl ">
           <Link to="/">Système Mondial de Détresse et de Sécurité en Mer</Link>

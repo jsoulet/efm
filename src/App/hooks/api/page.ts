@@ -5,7 +5,7 @@ import { Page } from './types'
 import typeIds from './typeIds'
 
 export function fetchBySlug(pageSlug: string) {
-  return useQuery<EntryCollection<Page>>('Page', () => {
+  return useQuery<EntryCollection<Page>>(['Page', pageSlug], () => {
     return client.getEntries<Page>({
       content_type: typeIds.page,
       'fields.slug': pageSlug,

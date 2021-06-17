@@ -4,7 +4,7 @@ import { Entry } from 'contentful'
 import { Education } from './types'
 
 export function fetchOne(educationId: string) {
-  return useQuery<Entry<Education>>('EducationsWithChapters', () => {
+  return useQuery<Entry<Education>>(['Educations', educationId], () => {
     return client.getEntry<Education>(educationId, {
       include: 2,
       limit: 1000,
