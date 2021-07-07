@@ -53,8 +53,8 @@ const Main: FC = ({ children }) => {
               <img src={logoEfm} alt="Logo Ecole des Formations Maritimes" />
             </a>
             <a
-              href="https://travail-emploi.gouv.fr/formation-professionnelle/acteurs-cadre-et-qualite-de-la-formation-professionnelle/qualiopi"
-              title="Charte d'usage Qualiopi"
+              href="https://www.ecoledesformationsmaritimes.fr/certification-qualiopi"
+              title="Certification Qualiopi"
             >
               <img src={logoQualiopi} alt="Logo Qualiopi, processus certifié" />
             </a>
