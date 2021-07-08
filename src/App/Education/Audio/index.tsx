@@ -3,6 +3,8 @@ import React, { FC, useState } from 'react'
 import { FaPlay, FaPause } from 'react-icons/fa'
 import useSound from 'use-sound'
 import styles from './Audio.module.css'
+import FlagFR from './fr.png'
+import FlagUK from './uk.png'
 
 interface AudioProps {
   id: string
@@ -51,8 +53,14 @@ const Audio: FC<AudioProps> = ({
         </div>
       </div>
       <div>
-        <label htmlFor={id} className="inline-flex items-center cursor-pointer">
-          <span className="mr-3 text-md">🇫🇷</span>
+        <label
+          htmlFor={id}
+          className="inline-flex items-center cursor-pointer"
+          title={`Afficher le texte en ${isEnglish ? 'français' : 'anglais'}`}
+        >
+          <span className="mr-2 text-md">
+            <img src={FlagFR} alt="" className={styles.flag} />
+          </span>
           <span className="relative focus-within:ring">
             <span
               className={cn(
@@ -67,8 +75,7 @@ const Audio: FC<AudioProps> = ({
               className={cn(
                 'absolute block w-4 h-4 mt-1 ml-1 rounded-full shadow inset-y-0 left-0 bg-white focus-within:shadow-outline transition-transform duration-300 ease-in-out transform',
                 {
-                  ' translate-x-full': isEnglish,
-                  ' ': !isEnglish,
+                  'translate-x-full': isEnglish,
                 }
               )}
             >
@@ -84,7 +91,9 @@ const Audio: FC<AudioProps> = ({
               />
             </span>
           </span>
-          <span className="ml-3 text-md">🇬🇧</span>
+          <span className="ml-2 text-md">
+            <img src={FlagUK} alt="" className={styles.flag} />
+          </span>
         </label>
       </div>
     </button>

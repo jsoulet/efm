@@ -2,3 +2,7 @@
   @apply text-primary;
   @apply transition;
 }
+
+.flag {
+  width: 30px;
+}

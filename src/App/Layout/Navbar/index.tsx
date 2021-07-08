@@ -4,6 +4,7 @@ import { useRouteMatch, Link } from 'react-router-dom'
 import { HiChevronLeft } from 'react-icons/hi'
 import cn from 'classnames'
 import useGreetings from './useGreetings'
+import WavingHand from './waving-hand.png'
 import styles from './Navbar.module.css'
 
 interface NavlinkProps {
@@ -25,8 +26,13 @@ const Navbar: FC = () => {
   return (
     <nav className=" text-white  mb-2 flex justify-between items-baseline">
       {matchesHome && (
-        <div className="text-2xl font-bold">
-          <span className={cn(styles.wave)}>👋</span> {greetings}
+        <div className="text-2xl font-bold flex items-center">
+          <img
+            src={WavingHand}
+            alt=""
+            className={cn('mr-2', styles.wave, styles.hand)}
+          />
+          {greetings}
         </div>
       )}
       {!matchesHome && (
