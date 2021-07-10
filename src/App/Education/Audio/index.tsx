@@ -58,7 +58,7 @@ const Audio: FC<AudioProps> = ({
           className="inline-flex items-center cursor-pointer"
           title={`Afficher le texte en ${isEnglish ? 'français' : 'anglais'}`}
         >
-          <span className="mr-2 text-md">
+          <span className="mr-2 text-md flex-shrink-0">
             <img src={FlagFR} alt="FR" className={styles.flag} />
           </span>
           <span className="relative focus-within:ring">
@@ -91,7 +91,7 @@ const Audio: FC<AudioProps> = ({
               />
             </span>
           </span>
-          <span className="ml-2 text-md">
+          <span className="ml-2 text-md flex-shrink-0">
             <img src={FlagUK} className={styles.flag} alt="UK" />
           </span>
         </label>
