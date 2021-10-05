@@ -1,22 +1,27 @@
 import React, { FC } from 'react'
 import { IconType } from 'react-icons'
-import { useRouteMatch, Link } from 'react-router-dom'
+import { useRouteMatch, Link, useHistory } from 'react-router-dom'
 import { HiChevronLeft } from 'react-icons/hi'
 import cn from 'classnames'
 import useGreetings from './useGreetings'
 import WavingHand from './waving-hand.png'
 import styles from './Navbar.module.css'
 
-interface NavlinkProps {
+interface BackLinkProps {
   label: string
   icon: IconType
-  to: string
 }
-const Navlink: FC<NavlinkProps> = ({ label, icon: Icon, to }) => {
+const BackLink: FC<BackLinkProps> = ({ label, icon: Icon }) => {
+  const history = useHistory()
   return (
-    <Link className="flex items-center " to={to}>
+    <div
+      role="button"
+      className="flex items-center "
+      onClick={history.goBack}
+      tabIndex={0}
+    >
       <Icon className="mr-1" /> {label}
-    </Link>
+    </div>
   )
 }
 
@@ -35,9 +40,7 @@ const Navbar: FC = () => {
           {greetings}
         </div>
       )}
-      {!matchesHome && (
-        <Navlink label="Retour aux formations" icon={HiChevronLeft} to="/" />
-      )}
+      {!matchesHome && <BackLink label="Retour" icon={HiChevronLeft} />}
     </nav>
   )
 }

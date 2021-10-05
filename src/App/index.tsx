@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import Layout from './Layout'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import Home from './Home'
+import Chapter from './Chapter'
 import Education from './Education'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { ApiProvider } from './hooks/apiContext'
@@ -19,6 +20,9 @@ const App: FC = () => {
                 <Home />
               </Route>
               <Route path="/education/:educationId/chapter/:chapterId">
+                <Chapter />
+              </Route>
+              <Route path="/education/:educationId">
                 <Education />
               </Route>
               <Route path="/:slug">

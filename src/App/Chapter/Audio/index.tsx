@@ -52,7 +52,7 @@ const Audio: FC<AudioProps> = ({
           </div>
         </div>
       </div>
-      <div>
+      <div className="flex-shrink-0">
         <label
           htmlFor={id}
           className="inline-flex items-center cursor-pointer"

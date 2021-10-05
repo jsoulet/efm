@@ -38,7 +38,7 @@ const Home: FC = () => {
           return (
             <Link
               key={education.sys.id}
-              to={`/education/${education.sys.id}/chapter/${firstChapter.sys.id}`}
+              to={`/education/${education.sys.id}`}
               className="flex"
             >
               {card}
