@@ -1,6 +1,9 @@
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { useApi } from 'App/hooks/apiContext'
+import { useAuth } from 'App/hooks/authContext'
+import Loader from 'components/Loader'
+import LoginForm from 'components/LoginForm'
 import cn from 'classnames'
 import Banner from './Banner'
 import Navbar from './Navbar'
@@ -11,6 +14,7 @@ import logoQualiopi from './logo-qualiopi.png'
 
 const Main: FC = ({ children }) => {
   const { home } = useApi()
+  const { isLoading, isAuthenticated, setAuthCode } = useAuth()
   const { data } = home.fetchHome()
 
   return (
@@ -31,7 +35,11 @@ const Main: FC = ({ children }) => {
         <div className="max-w-4xl mx-auto relative px-4 lg:px-0">
           <Navbar />
           <main className="bg-white shadow-sm p-8 4xl:p-0 w-full rounded-2xl border-gray-200 mb-6">
-            {children}
+            {isAuthenticated && children}
+            {isLoading && <Loader />}
+            {!isLoading && !isAuthenticated && (
+              <LoginForm onSubmit={setAuthCode} />
+            )}
           </main>
           {data && (
             <nav className="flex mb-6 justify-center items-center">
