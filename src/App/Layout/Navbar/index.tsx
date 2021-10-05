@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { IconType } from 'react-icons'
-import { useRouteMatch, Link, useHistory } from 'react-router-dom'
+import { useRouteMatch, useHistory } from 'react-router-dom'
 import { HiChevronLeft } from 'react-icons/hi'
 import cn from 'classnames'
 import useGreetings from './useGreetings'
