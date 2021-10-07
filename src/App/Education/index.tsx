@@ -3,11 +3,14 @@ import { useParams } from 'react-router-dom'
 import Loader from 'components/Loader'
 import React from 'react'
 import ChapterList from './ChapterList'
+import { useNavigation } from 'App/hooks/navigationContext'
 
 const Education = () => {
   const { educationId } = useParams()
   const { education } = useApi()
   const { data: educationData, isLoading } = education.fetchOne(educationId)
+  const { setBacklink } = useNavigation()
+  setBacklink('Retour à la liste des formations', `/`)
   if (isLoading) {
     return <Loader />
   }

@@ -6,11 +6,14 @@ import { useApi } from 'App/hooks/apiContext'
 import ChapterSelect from './ChapterSelect'
 import Audio from './Audio'
 import Paginate from './Paginate'
+import { useNavigation } from 'App/hooks/navigationContext'
 
 const Chapter: FC = () => {
   const { educationId, chapterId } = useParams()
   const { education } = useApi()
   const { data, isLoading } = education.fetchOne(educationId)
+  const { setBacklink } = useNavigation()
+  setBacklink('Retour à la formation', `/education/${educationId}`)
   const currentChapter = useMemo(
     () => data?.fields.chapters.find(chapter => chapter.sys.id === chapterId),
     [data, chapterId]

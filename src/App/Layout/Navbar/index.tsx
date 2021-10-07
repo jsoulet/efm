@@ -1,36 +1,32 @@
 import React, { FC } from 'react'
 import { IconType } from 'react-icons'
-import { useRouteMatch, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { HiChevronLeft } from 'react-icons/hi'
 import cn from 'classnames'
 import useGreetings from './useGreetings'
 import WavingHand from './waving-hand.png'
 import styles from './Navbar.module.css'
+import { useNavigation } from 'App/hooks/navigationContext'
 
 interface BackLinkProps {
   label: string
+  path: string
   icon: IconType
 }
-const BackLink: FC<BackLinkProps> = ({ label, icon: Icon }) => {
-  const history = useHistory()
+const BackLink: FC<BackLinkProps> = ({ label, path, icon: Icon }) => {
   return (
-    <div
-      role="button"
-      className="flex items-center "
-      onClick={history.goBack}
-      tabIndex={0}
-    >
+    <Link className="flex items-center " to={path}>
       <Icon className="mr-1" /> {label}
-    </div>
+    </Link>
   )
 }
 
 const Navbar: FC = () => {
-  const matchesHome = useRouteMatch({ path: '/', exact: true, strict: true })
   const greetings = useGreetings()
+  const { backlink } = useNavigation()
   return (
     <nav className=" text-white  mb-2 flex justify-between items-baseline">
-      {matchesHome && (
+      {!backlink && (
         <div className="text-2xl font-bold flex items-center">
           <img
             src={WavingHand}
@@ -40,7 +36,13 @@ const Navbar: FC = () => {
           {greetings}
         </div>
       )}
-      {!matchesHome && <BackLink label="Retour" icon={HiChevronLeft} />}
+      {backlink && (
+        <BackLink
+          label={backlink.label}
+          path={backlink.path}
+          icon={HiChevronLeft}
+        />
+      )}
     </nav>
   )
 }
