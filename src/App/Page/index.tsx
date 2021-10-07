@@ -3,11 +3,14 @@ import { useParams } from 'react-router-dom'
 import Loader from 'components/Loader'
 import { useApi } from 'App/hooks/apiContext'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { useNavigation } from 'App/hooks/navigationContext'
 
 const Page: FC = () => {
   const { slug } = useParams()
   const { page: pageService } = useApi()
   const { data, isLoading } = pageService.fetchBySlug(slug)
+  const { setBacklink } = useNavigation()
+  setBacklink('Retour à la liste des formations', `/`)
   if (isLoading) {
     return <Loader />
   }
@@ -16,6 +19,9 @@ const Page: FC = () => {
   }
   const [page] = data.items
 
+  if (!page) {
+    return <div>Page not found</div>
+  }
   return (
     <>
       <div className="flex justify-between items-center flex-col md:flex-row">

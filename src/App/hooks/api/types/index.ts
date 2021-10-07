@@ -37,3 +37,8 @@ export type Page = {
   content: Document
   slug: string
 }
+
+export type Password = {
+  code: string
+  expirationDate: string
+}

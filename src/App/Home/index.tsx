@@ -3,11 +3,13 @@ import Card from './Card'
 import { Link } from 'react-router-dom'
 import Loader from 'components/Loader'
 import { useApi } from 'App/hooks/apiContext'
+import { useNavigation } from 'App/hooks/navigationContext'
 
 const Home: FC = () => {
   const { home } = useApi()
   const { data, isLoading } = home.fetchHome()
-
+  const { clearBacklink } = useNavigation()
+  clearBacklink()
   if (isLoading) {
     return <Loader />
   }
@@ -38,7 +40,7 @@ const Home: FC = () => {
           return (
             <Link
               key={education.sys.id}
-              to={`/education/${education.sys.id}/chapter/${firstChapter.sys.id}`}
+              to={`/education/${education.sys.id}`}
               className="flex"
             >
               {card}

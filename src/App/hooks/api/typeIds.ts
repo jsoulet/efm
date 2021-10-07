@@ -3,6 +3,7 @@ enum typeIds {
   chapter = 'chapter',
   home = 'home',
   page = 'page',
+  password = 'password',
 }
 
 export default typeIds
